@@ -36,7 +36,6 @@ import dev.nocalhost.plugin.intellij.commands.data.NhctlRawConfig;
 import dev.nocalhost.plugin.intellij.commands.data.NhctlSyncStatus;
 import dev.nocalhost.plugin.intellij.commands.data.NhctlSyncStatusOptions;
 import dev.nocalhost.plugin.intellij.commands.data.ServiceContainer;
-import dev.nocalhost.plugin.intellij.configuration.php.NocalhostPhpDebugRunner;
 import dev.nocalhost.plugin.intellij.data.NocalhostContext;
 import dev.nocalhost.plugin.intellij.exception.NocalhostExecuteCmdException;
 import dev.nocalhost.plugin.intellij.service.NocalhostContextManager;
@@ -131,17 +130,17 @@ public class NocalhostProfileState extends CommandLineState {
                 }
 
                 String runnerId = getEnvironment().getRunner().getRunnerId();
-                if (NocalhostPhpDebugRunner.RUNNER_ID.equals(runnerId)) {
-                    // PHP remote debugging use SSH tunnel
-                    doCreateTunnel(container);
-                } else {
+//                if (NocalhostPhpDebugRunner.RUNNER_ID.equals(runnerId)) {
+//                    // PHP remote debugging use SSH tunnel
+//                    doCreateTunnel(container);
+//                } else {
                     String remotePort = resolveDebugPort(container);
                     if (!StringUtils.isNotEmpty(remotePort)) {
                         throw new ExecutionException("Remote debug port not configured.");
                     }
                     String localPort = startDebugPortForward(context, remotePort);
                     debug = new NocalhostRunnerContext.Debug(remotePort, localPort);
-                }
+//                }
             } else {
                 if (!StringUtils.isNotEmpty(command.getRun())) {
                     throw new ExecutionException("Run command not configured");

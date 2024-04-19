@@ -5,6 +5,9 @@ import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 
 import dev.nocalhost.plugin.intellij.topic.NocalhostTreeUpdateNotifier;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlinx.coroutines.CoroutineScope;
 
 public class DevSpaceTreeAutoRefreshListener implements ApplicationInitializedListener {
     private static final long NOCALHOST_TREE_UPDATE_INTERVAL_MILLIS = 10 * 1000;  // 10 seconds
@@ -26,5 +29,9 @@ public class DevSpaceTreeAutoRefreshListener implements ApplicationInitializedLi
                 ).action();
             }
         });
+    }
+    @Override
+    public Object execute(CoroutineScope asyncScope, Continuation<? super Unit> complete) {
+        return "";
     }
 }

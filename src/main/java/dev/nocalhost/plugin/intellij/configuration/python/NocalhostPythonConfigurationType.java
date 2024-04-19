@@ -1,3 +1,4 @@
+/*
 package dev.nocalhost.plugin.intellij.configuration.python;
 
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -42,3 +43,4 @@ public class NocalhostPythonConfigurationType implements ConfigurationType {
         return new ConfigurationFactory[]{new NocalhostPythonConfigurationFactory(this)};
     }
 }
+*/

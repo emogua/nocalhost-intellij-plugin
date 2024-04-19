@@ -57,11 +57,9 @@ val terminalPlugin = "terminal"
 var javascriptPlugin = "JavaScript"
 var javascriptDebuggerPlugin = "JavaScriptDebugger"
 val javaPlugin = "com.intellij.java"
-val phpPlugin = "com.jetbrains.php:" + prop("phpPluginVersion")
-val goPlugin = "org.jetbrains.plugins.go:" + prop("goPluginVersion")
-var pythonPlugin = "Pythonid:" + prop("pythonPluginVersion")
 
 version = "$nocalhostVersion-$platformVersion"
+println("!!!!!$version $platformVersion")
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
@@ -70,10 +68,7 @@ intellij {
         javascriptDebuggerPlugin,
         javascriptPlugin,
         terminalPlugin,
-        pythonPlugin,
         javaPlugin,
-        phpPlugin,
-        goPlugin
     ))
     pluginName.set("nocalhost-intellij-plugin")
     updateSinceUntilBuild.set(true)

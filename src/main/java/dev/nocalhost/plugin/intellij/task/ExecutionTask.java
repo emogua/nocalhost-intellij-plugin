@@ -35,8 +35,7 @@ import dev.nocalhost.plugin.intellij.configuration.go.NocalhostGoConfigurationTy
 import dev.nocalhost.plugin.intellij.configuration.java.NocalhostJavaConfigurationType;
 import dev.nocalhost.plugin.intellij.configuration.node.NocalhostNodeConfigurationType;
 import dev.nocalhost.plugin.intellij.configuration.php.NocalhostPhpConfigurationType;
-import dev.nocalhost.plugin.intellij.configuration.python.NocalhostPythonConfiguration;
-import dev.nocalhost.plugin.intellij.configuration.python.NocalhostPythonConfigurationType;
+//import dev.nocalhost.plugin.intellij.configuration.python.NocalhostPythonConfigurationType;
 import dev.nocalhost.plugin.intellij.exception.NocalhostExecuteCmdException;
 import dev.nocalhost.plugin.intellij.nhctl.NhctlDevAssociateCommand;
 import dev.nocalhost.plugin.intellij.service.NocalhostContextManager;
@@ -55,22 +54,22 @@ public class ExecutionTask extends Task.Backgroundable {
     private final DevModeService service;
     private final Map<String, Class<? extends ConfigurationType>> code2conf = new HashMap<>() {
         {
-            put("GO", NocalhostGoConfigurationType.class);
-            put("PS", NocalhostPhpConfigurationType.class);
+//            put("GO", NocalhostGoConfigurationType.class);
+//            put("PS", NocalhostPhpConfigurationType.class);
             put("WS", NocalhostNodeConfigurationType.class);
             put("IC", NocalhostJavaConfigurationType.class);
             put("IU", NocalhostJavaConfigurationType.class);
-            put("PY", NocalhostPythonConfigurationType.class);
+//            put("PY", NocalhostPythonConfigurationType.class);
         }
     };
 
     private final Map<String, Class<? extends ConfigurationType>> lang2conf = new HashMap<>() {
         {
-            put("go", NocalhostGoConfigurationType.class);
-            put("php", NocalhostPhpConfigurationType.class);
+//            put("go", NocalhostGoConfigurationType.class);
+//            put("php", NocalhostPhpConfigurationType.class);
             put("node", NocalhostNodeConfigurationType.class);
             put("java", NocalhostJavaConfigurationType.class);
-            put("python", NocalhostPythonConfigurationType.class);
+//            put("python", NocalhostPythonConfigurationType.class);
         }
     };
 
@@ -144,15 +143,15 @@ public class ExecutionTask extends Task.Backgroundable {
             conf = list.get(0);
         }
         // Python
-        if (conf.getType() instanceof NocalhostPythonConfigurationType) {
-            var port = getDebugPort();
-            if (StringUtils.isEmpty(port)) {
-                throw new ExecutionException("The remote debug port is not configured.");
-            }
-            var pyconf = (NocalhostPythonConfiguration) conf.getConfiguration();
-            pyconf.setPort(port);
-            pyconf.setHost("127.0.0.1");
-        }
+//        if (conf.getType() instanceof NocalhostPythonConfigurationType) {
+//            var port = getDebugPort();
+//            if (StringUtils.isEmpty(port)) {
+//                throw new ExecutionException("The remote debug port is not configured.");
+//            }
+////            var pyconf = (NocalhostPythonConfiguration) conf.getConfiguration();
+////            pyconf.setPort(port);
+////            pyconf.setHost("127.0.0.1");
+//        }
         manager.setSelectedConfiguration(conf);
         return conf;
     }

@@ -1,3 +1,4 @@
+/*
 package dev.nocalhost.plugin.intellij.configuration.go;
 
 import com.goide.dlv.DlvDebugProcess;
@@ -77,4 +78,4 @@ public class NocalhostGoDlvDebugRunner implements ProgramRunner<RunnerSettings> 
             }
         }).getRunContentDescriptor();
     }
-}
+}*/

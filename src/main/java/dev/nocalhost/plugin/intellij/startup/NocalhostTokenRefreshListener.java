@@ -15,6 +15,9 @@ import dev.nocalhost.plugin.intellij.api.data.UserInfo;
 import dev.nocalhost.plugin.intellij.settings.NocalhostSettings;
 import dev.nocalhost.plugin.intellij.settings.data.NocalhostAccount;
 import dev.nocalhost.plugin.intellij.utils.TokenUtil;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlinx.coroutines.CoroutineScope;
 
 // Todo fix this deprecated interface according to
 //  https://youtrack.jetbrains.com/issue/GO-16024/com.intellij.diagnostic.PluginException-Override-execute
@@ -74,5 +77,9 @@ public class NocalhostTokenRefreshListener implements ApplicationInitializedList
                         e);
             }
         }
+    }
+    @Override
+    public Object execute(CoroutineScope asyncScope, Continuation<? super Unit> complete) {
+        return "";
     }
 }

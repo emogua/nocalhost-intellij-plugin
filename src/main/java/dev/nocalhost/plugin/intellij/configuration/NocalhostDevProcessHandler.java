@@ -84,15 +84,18 @@ public class NocalhostDevProcessHandler extends KillableProcessHandler {
 
     @Nullable
     private ConsoleView getConsoleView() {
-        RunContentDescriptor contentDescriptor = RunContentManager
-                .getInstance(executionEnvironment.getProject())
-                .findContentDescriptor(executionEnvironment.getExecutor(), this);
-
-        ConsoleView console = null;
-        if (contentDescriptor != null && contentDescriptor.getExecutionConsole() instanceof ConsoleView) {
-            console = (ConsoleView) contentDescriptor.getExecutionConsole();
+        try {
+            RunContentDescriptor contentDescriptor = RunContentManager
+                    .getInstance(executionEnvironment.getProject())
+                    .findContentDescriptor(executionEnvironment.getExecutor(), this);
+            ConsoleView console = null;
+            if (contentDescriptor != null && contentDescriptor.getExecutionConsole() instanceof ConsoleView) {
+                console = (ConsoleView) contentDescriptor.getExecutionConsole();
+            }
+            return console;
+        } catch (Throwable t) {
+            return null;
         }
-        return console;
     }
 
     @Override
